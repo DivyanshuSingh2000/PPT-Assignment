@@ -1,0 +1,204 @@
+Text
+"1. Problem Statement  
+ 
+1. Hypothesis 1: There exists a correlation between change in loan in intraday file and change in New 
+Loan value. Higher the change and better the correlation 
+2. Hypothesis 2:A combined dataset of Intraday and previous day EOD dataset can help us in 
+identifying the changes and patterns in New Loan. 
+ 
+2. Dataset 
+Datasets used in the study are Securities Finance datasets. They are Intraday, NewLoan, EndofDay (EOD) 
+datasets respectively.New Loan data is fetched by using APIs provided by SF and rest data is available in 
+form of flat files. 
+Universe: US equity stocks that are part of the Securities Finance end of day Intraday file.  
+Time Period: The study is focused on the period between 1stJul 2021 – 30th Jun 2022.  
+Our predictions for New Loan were based on the most recent Securities Finance Intraday file available 
+on that business day. 
+ 
+3. Methodology  
+As we are having two problem statements. 
+1. Identifyingsignificant change in Security Finance New Loan dataset using Intraday dataset for US 
+Equities. 
+ 
+2. Based on the Securities Finance Intraday and Previous day EOD dataset, we are identifying 
+significant change in the Securities Finance New Loan dataset for US equities. 
+ 
+Since any significant changes in the former will be reflected in the latter. 
+Intraday dataset is available 28 hours prior to the publication of the EOD files. This means that with the 
+proposed hypothesis, change in New Loan can be captured at least one day in advance in case of 
+hypothesis 2. For hypothesis 1, since the dataset involved is only Intraday it means that the change in 
+New Loan can be deduced along with Intraday. So, the business value of this study helps in clients 
+possessing the information pertaining new loan very early change 
+Classification:  
+For the both the problem statements we are performing classification for identifying change in new 
+loan. We are using 10% as threshold for which we will be getting how much changeis there in new loan. 
+We are using Decision Tree Classifier to train the model for both the problem statements. This classifier is having tree-like structure, where inner nodes are the features of the data, branches 
+show the decision rules, and each leaf node of the tree serves as the result. Decision nodes are used to 
+make any decision and have multiple branches, whereas Leaf nodes are the output of those decisions 
+and do not contain any further branches. 
+So, we can also say that a decision tree classifier is a graphical way of obtaining all possible solutions to a 
+particular problem based on given conditions. As the size of the tree increases means tree becomes 
+deeper, and more typical decision rules and models will fit more accurately. 
+Sometimes decision tree leads to overfitting, so in order to avoid overfitting we used a hyperparameter 
+called min_impurity_decreases. This parameter helps to avoid overfitting in decision tree as it prevents 
+tree from doing further split. 
+Regression:  
+After performing classification regression is applied on the problem statement 2 i.e., taking Intraday and 
+previous day EOD data only for Quantity and then predicting the New Loan Quantity. 
+We first normalize the data using “Min-Max Scaler” data pre-processing technique then apply Linear 
+Regression Algorithm on normalized data for predicting the value of new loan quantity.  
+Linear regression is a statistical technique that shows a linear relationship between a dependent 
+variable (y) and an independent variable (X). Using linear regression, we can find how the value of the 
+dependent variable changes as the value of the independent variable changes.And this is what we are 
+doing i.e., how much New Loan data changes as the value of Intraday and previous day EOD data 
+changes.  
+We used Mean Absolute Error (MAE) to evaluate prediction error rates and model performance. MAE 
+refers to the magnitude of difference between prediction of an observation and true value of that 
+observation.  
+ 
+4. Learning & Challenges  
+Learning:  
+We learnt how to fetch the data using APIs, analysis of data based on different aspects like regions and 
+markets. Frequency of datasetis different as Intraday data is of present day and EOD data is of previous 
+day so to establishing relationship in between them is good learning task for us. 
+We learnt about different terminologies like finance market, Intraday, New Loan, EOD, etc. 
+Challenges:  
+We faced difficulties in collecting and fetching the huge datafor one year, merging multiple files, and 
+finding which features are impacting more on the new loan. 
+All the data is not present in single file, like some data is fetched through APIs and some data is present 
+in different files so merging that data in one single file is quite a typical task. Terminologies such as Intraday, New Loan, EOD, Value on Loan, Qu
+are new to us.  
+5. Results 
+For Classification: 
+Approach  
+Machine Learning Approach
+Data Analysis Approach  
+ 
+Table 1 show the results for s ignificant 
+comparing Machine learning results with Data Analysis results, and we can observe that Machine 
+learning approach have better results 
+ 
+Fig. 1: Confusion Matrix for Problem statement 1 (New Loan Value)
+Above figure shows the confusion matrix when identifying significant change in New Loan Value when 
+using Intraday data only for US equities.
+ 
+Approach  
+Machine Learning Approach
+Data Analysis Approach  
+ 
+Table 2 show the results for s ignificant 
+data is used. Again, also for this problem statement we are getting better results in case of Machine 
+learning approach for both New Loan Value and Quantity.
+Terminologies such as Intraday, New Loan, EOD, Value on Loan, Qu antity on Loan, etc. all these terms 
+Table 1: Results for Problem statement 1 
+Recall (For New Loan Value)  Recall (For New Loan Quantity)
+Machine Learning Approach  72.618% 72.695%
+ 54.478% 64.044%
+ignificant change in New Loan when only Intraday data is used. 
+comparing Machine learning results with Data Analysis results, and we can observe that Machine 
+results than another approach for both New Loan Value and Quantity
+ 
+Fig. 1: Confusion Matrix for Problem statement 1 (New Loan Value)  
+Above figure shows the confusion matrix when identifying significant change in New Loan Value when 
+US equities.  
+Table 2: Results for Problem statement 2 
+Recall (For New Loan Value)  Recall (For New Loan Quantity)
+Machine Learning Approach  77.907% 77.32
+ 54.478% 64.044%
+ignificant change in New Loan when both Intraday and previous day EOD 
+for this problem statement we are getting better results in case of Machine 
+learning approach for both New Loan Value and Quantity.  
+antity on Loan, etc. all these terms 
+Recall (For New Loan Quantity)  
+72.695% 
+64.044% 
+in New Loan when only Intraday data is used. We are 
+comparing Machine learning results with Data Analysis results, and we can observe that Machine 
+for both New Loan Value and Quantity . 
+Above figure shows the confusion matrix when identifying significant change in New Loan Value when 
+Recall (For New Loan Quantity)  
+77.324% 
+64.044% 
+in New Loan when both Intraday and previous day EOD 
+for this problem statement we are getting better results in case of Machine Fig. 2: Confusion Matrix for Problem statem
+Above figure shows the confusion matrix when identifying significant change in New Loan 
+when using both Intraday and previous day EOD 
+ 
+Fig. 3: 
+The chart shows the comparison between both approaches i.e., Machine learning and Data Analysis for 
+both New Loan Value. 
+For Regression: 
+Table 3: Results for 
+Approach
+9 months (Train) + 3 months (Test)
+1 year (Train) + 
+ 
+54.478
+0102030405060708090
+New Loan Value (PS1)New Loan Value Comparison  
+: Confusion Matrix for Problem statem ent 2 (New Loan Quantity) 
+Above figure shows the confusion matrix when identifying significant change in New Loan 
+and previous day EOD data for US equities. 
+Fig. 3: Comparison of individual strategies 
+the comparison between both approaches i.e., Machine learning and Data Analysis for 
+Table 3: Results for New Loan Quantity 
+Approach  MAE (New Loan Quantity)
+9 months (Train) + 3 months (Test)  126100.850407
+1 year (Train) + 6 months  (Test) 106661.244820
+54.47872.61877.907
+New Loan Value (PS1) New Loan Value (PS2)New Loan Value Comparison 
+Data Analysis Machine LearningAbove figure shows the confusion matrix when identifying significant change in New Loan Quantity 
+ 
+the comparison between both approaches i.e., Machine learning and Data Analysis for 
+MAE (New Loan Quantity)  
+126100.850407  
+106661.244820  Intraday and previous day EOD data is used for predicting the New Loan Quantity. Two approaches are 
+used, in first approach we take data of 1 year
+months data for testing purpose . Similarly in second approach we take data of 1.5 years, 1 year data for 
+training purpose and 6 months data for testing purpose. 
+Fig. 4: Actual vs Predicted for 1 
+Fig. 5: Actual vs Predicted for 1 year data
+Fig. 6: Actual vs Predicted for 1 year data
+Intraday and previous day EOD data is used for predicting the New Loan Quantity. Two approaches are 
+first approach we take data of 1 year  in which we use 9 months data for training purpose and 3 
+. Similarly in second approach we take data of 1.5 years, 1 year data for 
+training purpose and 6 months data for testing purpose.  
+: Actual vs Predicted for 1 year data (AMAZON) 
+: Actual vs Predicted for 1 year data  (Goldman Sachs) 
+ 
+: Actual vs Predicted for 1 year data  (Microsoft) 
+Intraday and previous day EOD data is used for predicting the New Loan Quantity. Two approaches are 
+in which we use 9 months data for training purpose and 3 
+. Similarly in second approach we take data of 1.5 years, 1 year data for 
+ 
+ 
+ 
+Fig. 7: Actual vs Predicted for 1
+Fig. 8: Actual vs Predicted for 1
+Fig. 9: Actual vs Predicted for 1
+ 
+: Actual vs Predicted for 1 .5 years data (Amazon) 
+ 
+: Actual vs Predicted for 1 .5 years data (Goldman Sachs) 
+ 
+: Actual vs Predicted for 1 .5 years data (Microsoft) 
+ 
+ 
+ 
+ 
+The above two figures represent the graph between actual new loan quantity and predicted new loan 
+quantity for 1 and 1.5 years of Intraday and previous day EOD data after applying linear regression 
+model. Blue color line shows predicted values and red lines shows actual values for New Loan Quantity. 
+Figures 4 to 9 shows the comparison of actual new loan quantity with predicted values for three 
+different indices for 1 and 1.5 years respectively. 
+ 
+6. Future Work  
+Classification: Instead of classifying New Loan into two labels i.e., >=10% and <10%, we can even 
+increase the number of labels to classify the New Loan like for four labels we can categories new loan 
+value as decrease, no significant change, increase, very high increase and accordingly we can fix our 
+threshold for which we are getting equal values for all four classes. 
+After classifying new loan, we can make individual models for each label to find out the exact magnitude 
+in the new loan. 
+Regression: Based on the market capital and indices, we can make different clusters of the data and 
+then we can apply multiple regression models on each cluster. We can then analyze the results of 
+different clusters individually.   "
