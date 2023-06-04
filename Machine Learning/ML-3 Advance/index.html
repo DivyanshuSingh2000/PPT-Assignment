@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predicted Profit</title>
+</head>
+<body>
+    <h1>Predicted Profit: {{ predicted_profit }}</h1>
+    <div id="plot"></div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        // Retrieve predicted profit from Flask
+        var predictedProfit = "{{ predicted_profit | tojson }}";
+
+        // Parse predicted profit JSON string
+        predictedProfit = JSON.parse(predictedProfit);
+
+        // Plotting the predicted profit using Plotly
+        var data = [
+            {
+                x: ['Predicted Profit'],
+                y: [predictedProfit],
+                type: 'bar'
+            }
+        ];
+
+        Plotly.newPlot('plot', data);
+    </script>
+</body>
+</html>
